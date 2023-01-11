@@ -11,7 +11,6 @@ const httpStatus = require('http-status');
 
 const getUserByEmailPassword = async (email, password) => {
     const response = await user.findOne({email, password});
-    console.log(response)
     if(response) {
       return {status: 200, message: response};
     }
