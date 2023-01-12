@@ -26,7 +26,6 @@ const corsOptions ={
 }
 app.use(cors(corsOptions))
 
-
 // v1 api routes
 app.get('/', (req, res)=> res.send('Server is healthy!'));
 

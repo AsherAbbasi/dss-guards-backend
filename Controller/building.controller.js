@@ -29,7 +29,8 @@
     });
 
     const updateBuilding = async (req, res) => {
-      const building = await buildingService.updateBuilding(req.params.id, req.body);
+      const {buildingCode}=req.params
+      const building = await buildingService.updateBuilding(buildingCode, req.body);
       res.send(building);
     };
  

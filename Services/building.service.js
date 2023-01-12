@@ -1,5 +1,6 @@
 const { building } = require('../Models');
 const httpStatus = require('http-status');
+const { findOne } = require('../Models/User.model');
 
 
 
@@ -22,7 +23,7 @@ const getBuildings = async () => {
 };
 
 const getBuildingByCode = async (buildingCode) => {
-  const response = await building.findOne(buildingCode);
+  const response = await building.findOne({buildingCode});
   if (response) {
     return { status: 200, message: response };
   }
@@ -40,13 +41,11 @@ const deleteBuildingByCode = async (buildingCode) => {
 
 const updateBuilding = async (buildingCode,updateBody) => {
   const response = await building.findOne({buildingCode});
-  console.log("gas",response)
   if (!response) {
-    return { status: 401, message: 'Something went wrong Please try later!' }
+    return { status: 401, message: 'Something went wrong please try later!' }
   }
   Object.assign(response, updateBody);
-  await response.updateOne();
-  console.log("updated",response)
+  await response.save();
   return response;
 };
 

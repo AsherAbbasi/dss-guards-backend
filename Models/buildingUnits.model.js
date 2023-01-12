@@ -1,21 +1,18 @@
 const mongoose = require('mongoose');
 
-const buildingSchema = mongoose.Schema(
+const buildingUnitsSchema = mongoose.Schema(
   {
     buildingCode: {
       type: String,
       required: true,
     },
-    buildingAddress: {
+    buildingUnits: {
       type: String,
       required: true,
     },
-    buildingUnits: {
-      type: [String],
-      required: true,
-    },
     parkingSlots: {
-        type: String,
+        type: Number,
+        default:3,
         required: true,
       }, 
   },
@@ -27,6 +24,6 @@ const buildingSchema = mongoose.Schema(
 
 
 
-const building = mongoose.model('building', buildingSchema);
+const buildingUnit = mongoose.model('buildingUnit', buildingUnitsSchema);
 
-module.exports = building;
+module.exports = buildingUnit;
