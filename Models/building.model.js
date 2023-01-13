@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const buildingSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.SchemaTypes.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     buildingCode: {
       type: String,
       required: true,

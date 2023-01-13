@@ -6,6 +6,7 @@ const routes = require('./routes/v1')
 const ApiError = require('./utils/ApiErrors');
 const {jwtStrategy} = require('./config/passport');
 const passport = require('passport');
+const bodyParser=require('body-parser');
 
 const app = express();
 
@@ -16,6 +17,9 @@ app.use(helmet());
 
 // parse json request body
 app.use(express.json());
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));

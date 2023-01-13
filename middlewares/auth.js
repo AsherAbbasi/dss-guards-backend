@@ -4,14 +4,15 @@ const ApiError = require('../utils/ApiErrors');
 const {roleRights} = require('./roles');
 
 const verifyCallback = (req, resolve, reject, requiredRights) => async (err, user, info) => {
+    console.log(user)
     if (err || info || !user) {
         return reject(new ApiError(httpStatus.UNAUTHORIZED, 'Please authenticate'));
     }
     req.user = user;
-    console.log(req.user);
     if (requiredRights.length) {
         const userRights = roleRights.get(user?.role);
-        if(req.baseUrl === '/api/agent'){
+        console.log(req.baseUrl)
+        if(req.baseUrl === '/api/building'){
             resolve();
         }
         const hasRequiredRights = requiredRights?.every((requiredRight) => userRights?.includes(requiredRight));

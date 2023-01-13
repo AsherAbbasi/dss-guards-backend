@@ -12,7 +12,6 @@ const { generateAuthTokens } = require('./tokens.service')
 
 const getUserByEmailPassword = async (email, password) => {
     const response = await user.findOne({email, password});
-    console.log(response)
     const token = await generateAuthTokens(response);
     if(response) {
       return {status: 200, message: {response , token}};
