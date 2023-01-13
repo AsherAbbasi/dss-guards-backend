@@ -16,11 +16,13 @@ const getUserById = async (id) => {
 
 const getUserByEmailPassword = async (email, password) => {
     const response = await user.findOne({email, password});
-    const token = await generateAuthTokens(response);
-    if(response) {
-      return {status: 200, message: {response , token}};
-    }
+    if(!response) {
     return {status: 401, message: 'Invalid Email Or Password'}
+
+    }
+    const token = await generateAuthTokens(response);
+    return {status: 200, message: {response , token}};
+
   };
 
   const getAllUser = async () => {
