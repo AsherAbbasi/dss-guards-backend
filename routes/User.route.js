@@ -9,4 +9,11 @@ router
 // .post(UserController.createUser)
 .post(UserController.getUserByEmailPassword)
 
+router
+.route('/AllUsers')
+.get(UserController.getAllUser)
+
+router
+.route('/:userId')
+.get(UserController.getUser)
 module.exports = router;

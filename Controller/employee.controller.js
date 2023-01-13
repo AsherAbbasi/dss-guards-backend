@@ -10,10 +10,16 @@
     res.status(status).json(message);
    });
 
-   const getEmployee = (async (req, res) => {
-      const {status, message} = await employeeService.getEmployee();
+   const getAllEmployee = (async (req, res) => {
+      const {status, message} = await employeeService.getAllEmployee();
       res.status(status).json(message);
      });
+   
+   //   const getEmployee = (async (req, res) => {
+   //    const id = req.params.id
+   //    const {status, message} = await employeeService.getEmployee(id);
+   //    res.status(status).json(message);
+   //   });
 
      const deleteEmployee =(async (req, res) => {
       const {status, message}= await employeeService.deleteEmployeeById(req.params.id);
@@ -22,7 +28,8 @@
  
    module.exports={
     AddEmployee,
-    getEmployee,
+    getAllEmployee,
+   //  getEmployee,
     deleteEmployee
    }
   

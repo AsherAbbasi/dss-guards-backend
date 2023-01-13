@@ -12,9 +12,7 @@
 
 
    const getBuildings = (async (req, res) => {
-      console.log(req.user._id)
-      const id = req.user._id;
-      const role = req.user.role;
+      const { role , id } = req.user;
       const {status, message} = await buildingService.getBuildings(role , id);
       res.status(status).json(message);
      });

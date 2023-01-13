@@ -10,7 +10,8 @@ const router = express.Router();
 router
 .route('/')
 .post(employeeController.AddEmployee)
-.get(employeeController.getEmployee)
+.get(employeeController.getAllEmployee)
+// .get(employeeController.getEmployee)
 
 router
 .route('/:id')

@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema(
   {
+    name:{
+      type: String,
+    },
     email: {
       type: String,
       required: true,
@@ -12,9 +15,11 @@ const userSchema = mongoose.Schema(
     },
     role: {
       type: String,
-      required: true,
+      // required: true,
     },
-   
+    buildingCode: {
+      type: String
+    }
   },
   {
     timestamps: true,

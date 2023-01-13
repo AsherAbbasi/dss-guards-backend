@@ -1,9 +1,6 @@
 const { building } = require('../Models');
 const httpStatus = require('http-status');
-const { findOne } = require('../Models/User.model');
-const { ObjectId } = require('mongodb');
-
-
+const { UserService } = require('./index')
 
 const createBuilding = async (userBody) => {
   const { buildingCode } = userBody
@@ -22,8 +19,10 @@ const getBuildings = async (role , id) => {
       return { status: 200, message: response };
     }
     return { status: 401, message: 'Building Not found' }
-  }else{
-    const response = await building.findOne(ObjectId(id));
+  }else if (role === 'User'){
+    const usersData = await UserService.getUserById(id);
+    const buildingCode = usersData.message.buildingCode;
+    const response = await getBuildingByCode(buildingCode);
     return { status: 200, message: response }
   }
 };

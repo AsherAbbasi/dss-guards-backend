@@ -3,8 +3,6 @@ const httpStatus = require('http-status');
 var ObjectID = require('mongodb').ObjectID;
 
 
-
-
 const AddEmployee = async (userBody) => {
   const { buildingCode } = userBody
   const data = await building.findOne({ buildingCode });
@@ -15,7 +13,7 @@ const AddEmployee = async (userBody) => {
   return { status: 200, message: response };
 };
 
-const getEmployee = async () => {
+const getAllEmployee = async () => {
   const response = await employee.find().sort({createdAt : -1});
   if (response) {
     return { status: 200, message: response };
@@ -33,8 +31,18 @@ const deleteEmployeeById = async (_id) => {
   return { status: 401, message: 'Not Found' }
 };
 
+
+// const getEmployee = async () => {
+//   const response = await employee.findOne().sort({createdAt : -1});
+//   if (response) {
+//     return { status: 200, message: response };
+//   }
+//   return { status: 401, message: ' Not found' }
+// };
+
 module.exports = {
     AddEmployee,
-    getEmployee,
+    // getEmployee,
+    getAllEmployee,
     deleteEmployeeById
 }
