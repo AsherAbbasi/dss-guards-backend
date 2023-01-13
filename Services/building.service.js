@@ -20,10 +20,12 @@ const getBuildings = async (role , id) => {
     }
     return { status: 401, message: 'Building Not found' }
   }else if (role === 'User'){
+    let buildingData = [];
     const usersData = await UserService.getUserById(id);
     const buildingCode = usersData.message.buildingCode;
     const response = await getBuildingByCode(buildingCode);
-    return { status: 200, message: response }
+    buildingData.push(response.message)
+    return { status: 200, message: buildingData }
   }
 };
 
