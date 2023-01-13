@@ -1,9 +1,8 @@
 var express = require('express');
 const buildingController = require('../Controller/building.controller');
-const buildingUnitsController = require('../Controller/buildngUnits.Controller');
 
+const auth = require('../middlewares/auth');
 
-const ApiError = require('../utils/ApiErrors');
 const router = express.Router();
 
 
@@ -11,7 +10,7 @@ const router = express.Router();
 router
 .route('/:buildingCode')
 .delete(buildingController.deleteBuilding)
-.get(buildingController.getBuildingByCode)
+.get(auth('AdminView'),buildingController.getBuildingByCode)
 .put(buildingController.updateBuilding)
 router
 .route('/')
