@@ -1,4 +1,4 @@
-const { buildingUnits } = require('../Models');
+const { bUnits } = require('../Models');
 const httpStatus = require('http-status');
 var ObjectID = require('mongodb').ObjectID;
 
@@ -6,7 +6,7 @@ var ObjectID = require('mongodb').ObjectID;
 
 
 const createUnits = async (userBody) => {
-    const response = await buildingUnits.insertMany(userBody);
+    const response = await bUnits.insertMany(userBody);
     if(!response){
         return { status:401, message: "something went wrong! plaese try later." };
     }
@@ -14,7 +14,7 @@ const createUnits = async (userBody) => {
   };
 
   const getBuildingUnits = async (buildingCode) => {
-    const response = await buildingUnits.find({buildingCode});
+    const response = await bUnits.find({buildingCode});
     if (response) {
       return { status: 200, message: response };
     }
@@ -22,7 +22,7 @@ const createUnits = async (userBody) => {
   };
 
   const updateBuildingUnits = async (_id,updateBody) => {
-    const response = await buildingUnits.findOne(ObjectID(_id));
+    const response = await bUnits.findOne(ObjectID(_id));
     if (!response) {
       return { status: 401, message: 'Something went wrong please try later!' }
     }

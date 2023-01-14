@@ -6,6 +6,8 @@ router
 .route('/')
 .post(reservationController.createReservation)
 .get(reservationController.getParkingReservation)
+router.post('/email', reservationController.sendVerificationEmail);
+
 
 router
 .route('/:id')

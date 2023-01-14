@@ -24,7 +24,7 @@ const parkingReservationSchema = mongoose.Schema(
       type: String,
       required:true,
     },
-    unitVisiting: {
+    buildingUnits: {
         type: String,
         required: true,
       },

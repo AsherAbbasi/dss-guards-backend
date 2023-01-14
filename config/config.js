@@ -12,6 +12,8 @@ const {
     DB_DIALECT,
     SMTP_HOST,
     SMTP_PORT,
+    SECURE,
+    TLS,
     SMTP_USERNAME,
     SMTP_PASSWORD,
     EMAIL_FROM,
@@ -35,6 +37,8 @@ module.exports = {
         smtp: {
           host: SMTP_HOST,
           port: SMTP_PORT,
+          secure:SECURE,
+          requireTLS:TLS,
           auth: {
             user: SMTP_USERNAME,
             pass: SMTP_PASSWORD,
