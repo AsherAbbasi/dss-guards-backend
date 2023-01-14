@@ -16,4 +16,13 @@ router
 router
 .route('/:userId')
 .get(UserController.getUser)
+
+router
+.route('/user')
+.post(UserController.AddUser)
+
+router
+.route('/:id')
+.delete(UserController.deleteUser)
+
 module.exports = router;

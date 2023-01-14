@@ -3,9 +3,7 @@ const UserRoute = require('../User.route');
 const buildingRoute = require('../building.route');
 const reservationRoute = require('../reservation.route');
 const buildingUnitsRoutes = require('../buildingUnits.route');
-const employeeRoutes = require('../employee.route');
-
-
+// const employeeRoutes = require('../employee.route');
 
 
 const router = express.Router();
@@ -28,10 +26,10 @@ const defaultRoutes = [
         path:'/units',
         route:buildingUnitsRoutes
       },
-      {
-        path:'/employee',
-        route:employeeRoutes
-      }
+      // {
+      //   path:'/employee',
+      //   route:employeeRoutes
+      // }
 
 ]
 defaultRoutes.forEach((route) => {

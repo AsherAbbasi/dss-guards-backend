@@ -4,10 +4,10 @@
  const ApiError = require('../utils/ApiErrors');
  
  
-   // const createUser =async (req, res) => {
-   // const user = await UserService.createUser(req.body);
-   // res.status(httpStatus.CREATED).send(user);
-   // };
+ const AddUser = (async (req, res) => {
+  const {status, message} = await UserService.AddUser(req.body);
+  res.status(status).json(message);
+ });
  
    const getUserByEmailPassword = (async (req, res) => {
     const {email, password} = req.body;
@@ -29,10 +29,17 @@
       res.send(user);
     });
  
+    const deleteUser =(async (req, res) => {
+      const {status, message}= await UserService.deleteUserById(req.params.id);
+      res.status(status).json(message);
+    });
+
    module.exports={
-   //  createUser,
+    AddUser,
     getUser,
     getAllUser,
     getUserByEmailPassword,
+    deleteUser
+    
    }
   
