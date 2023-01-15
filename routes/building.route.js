@@ -1,7 +1,8 @@
 var express = require('express');
 const buildingController = require('../Controller/building.controller');
 
-const ApiError = require('../utils/ApiErrors');
+const auth = require('../middlewares/auth');
+
 const router = express.Router();
 
 
@@ -14,9 +15,8 @@ router
 router
 .route('/')
 // .post(UserController.createUser)
-.post(buildingController.createBuilding)
-.get(buildingController.getBuildings)
-
+.post(auth('AdminView'),buildingController.createBuilding)
+.get(auth('AdminView'),buildingController.getBuildings)
 
 
 module.exports = router;

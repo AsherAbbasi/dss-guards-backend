@@ -1,7 +1,6 @@
 const { building } = require('../Models');
 const httpStatus = require('http-status');
-
-
+const { UserService } = require('./index')
 
 const createBuilding = async (userBody) => {
   const { buildingCode } = userBody
@@ -13,16 +12,25 @@ const createBuilding = async (userBody) => {
   return { status: 200, message: response };
 };
 
-const getBuildings = async () => {
-  const response = await building.find().sort({createdAt : -1});
-  if (response) {
-    return { status: 200, message: response };
+const getBuildings = async (role , id) => {
+  if(role === 'Admin'){
+    const response = await building.find().sort({createdAt : -1});
+    if (response) {
+      return { status: 200, message: response };
+    }
+    return { status: 401, message: 'Building Not found' }
+  }else if (role === 'User'){
+    let buildingData = [];
+    const usersData = await UserService.getUserById(id);
+    const buildingCode = usersData.message.buildingCode;
+    const response = await getBuildingByCode(buildingCode);
+    buildingData.push(response.message)
+    return { status: 200, message: buildingData }
   }
-  return { status: 401, message: 'Building Not found' }
 };
 
 const getBuildingByCode = async (buildingCode) => {
-  const response = await building.findOne(buildingCode);
+  const response = await building.findOne({buildingCode});
   if (response) {
     return { status: 200, message: response };
   }
@@ -40,13 +48,11 @@ const deleteBuildingByCode = async (buildingCode) => {
 
 const updateBuilding = async (buildingCode,updateBody) => {
   const response = await building.findOne({buildingCode});
-  console.log("gas",response)
   if (!response) {
-    return { status: 401, message: 'Something went wrong Please try later!' }
+    return { status: 401, message: 'Something went wrong please try later!' }
   }
   Object.assign(response, updateBody);
-  await response.updateOne();
-  console.log("updated",response)
+  await response.save();
   return response;
 };
 

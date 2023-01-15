@@ -9,4 +9,20 @@ router
 // .post(UserController.createUser)
 .post(UserController.getUserByEmailPassword)
 
+router
+.route('/AllUsers')
+.get(UserController.getAllUser)
+
+router
+.route('/:userId')
+.get(UserController.getUser)
+
+router
+.route('/user')
+.post(UserController.AddUser)
+
+router
+.route('/:id')
+.delete(UserController.deleteUser)
+
 module.exports = router;

@@ -4,6 +4,9 @@ const httpStatus = require('http-status');
 const cors = require('cors');
 const routes = require('./routes/v1')
 const ApiError = require('./utils/ApiErrors');
+const {jwtStrategy} = require('./config/passport');
+const passport = require('passport');
+const bodyParser=require('body-parser');
 
 const app = express();
 
@@ -14,6 +17,9 @@ app.use(helmet());
 
 // parse json request body
 app.use(express.json());
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
 // parse urlencoded request body
 app.use(express.urlencoded({ extended: true }));
@@ -26,6 +32,9 @@ const corsOptions ={
 }
 app.use(cors(corsOptions))
 
+// jwt authentication
+app.use(passport.initialize());
+passport.use('jwt', jwtStrategy);
 
 // v1 api routes
 app.get('/', (req, res)=> res.send('Server is healthy!'));

@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const buildingSchema = mongoose.Schema(
   {
+    // user: {
+    //   type: mongoose.SchemaTypes.ObjectId,
+    //   ref: 'User',
+    //   required: true,
+    // },
     buildingCode: {
       type: String,
       required: true,
@@ -24,10 +29,7 @@ const buildingSchema = mongoose.Schema(
   }
   
 );
-// superUserSchema.statics.isEmailTaken = async function (email, excludeUserId) {
-//   const user = await this.findOne({ email, _id: { $ne: excludeUserId } });
-//   return !!user;
-// };
+
 
 
 const building = mongoose.model('building', buildingSchema);
