@@ -9,9 +9,11 @@ const {
 
 sgMail.setApiKey(sendgridApiKey);
 const sendEmail = async (msg) => {
+
   try {
-    await sgMail.send(msg);
+    return sgMail.send(msg);
   } catch (error) {
+    console.log(error)
     return { status: 401, message: 'Message Not Sent!' }
   }
 };
@@ -52,7 +54,7 @@ const sendConfirmationEmail = (body) => {
   <h4> From ${body.timeFrom} to  ${body.timeTo}</h4>
   </div>
   </div>`;
-  const msg = { from, to: "asherabbasi44@gmail.com", subject, html };
+  const msg = { from, to: "iamibadd@gmail.com", subject, html };
   return sendEmail(msg);
 };
 

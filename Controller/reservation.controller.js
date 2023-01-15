@@ -9,8 +9,8 @@ const createReservation = (async (req, res) => {
     res.status(status).json(message);
    });
    const sendVerificationEmail = async (req, res) => {
-    await emailService.sendConfirmationEmail(req.body);
-    res.status(httpStatus.NO_CONTENT).send();
+   const email = await emailService.sendConfirmationEmail(req.body);
+    res.status(httpStatus.OK).send(email);
   };
 
    const getParkingReservation = (async (req, res) => {

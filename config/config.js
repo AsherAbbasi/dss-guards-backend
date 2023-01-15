@@ -37,7 +37,7 @@ module.exports = {
     DB_NAME,
     DB_DIALECT,
     corsOrigin: CORS_ORIGIN,
-    sendgridApiKey: "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",
+    sendgridApiKey:SENDGRID_API_KEY,
   email: {
     from: SENDGRID_EMAIL,
   },
