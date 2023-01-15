@@ -1,43 +1,61 @@
-const nodemailer = require('nodemailer');
-const config = require('../config/config');
-// const logger = require('../config/logger');
+const sgMail = require('@sendgrid/mail');
+const httpStatus = require('http-status');
+const {
+  sendgridApiKey,
+  email: { from },
+//   frontendURL,
+} = require('../config/config');
+// const ApiError = require('../utils/ApiError');
 
-const transport = nodemailer.createTransport(config.email.smtp);
-/* istanbul ignore next */
-// if (config.env !== 'test') {
-//   transport
-//     .verify()
-//     .then(() => logger.info('Connected to email server'))
-//     .catch(() => logger.warn('Unable to connect to email server. Make sure you have configured the SMTP options in .env'));
-// }
-
-/**
- * Send an email
- * @param {string} to
- * @param {string} subject
- * @param {string} text
- * @returns {Promise}
- */
-const sendEmail = async (to, subject, text) => {
-  const msg = { from: config.email.from, to, subject, text };
-  await transport.sendMail(msg);
+sgMail.setApiKey(sendgridApiKey);
+const sendEmail = async (msg) => {
+  try {
+    await sgMail.send(msg);
+  } catch (error) {
+    return { status: 401, message: 'Message Not Sent!' }
+  }
 };
 
-/**
- * Send verification email
- * @param {string} to
- * @param {string} token
- * @returns {Promise}
- */
-const sendVerificationEmail = async (to) => {
-  const subject = 'Reservation form ';
-  // replace this url with the link to the email verification page of your app
-  const text = 'test1';
-  await sendEmail(to, subject, text);
+
+const sendConfirmationEmail = (body) => {
+  const subject = 'Parking Permit Request!';
+  const html = `
+  <div style="margin:2px;padding:12px;background-color:#faf611">
+  <h2 style="color:Red;text-align:center;">DIGITAL SAFEGUARD SECURITY INC</h2>
+  <h3 style="color:Green;">Parking Permit</h3>
+  <div>
+  <div style="margin-bottom:12px"></div>
+  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Personal Information</h3>
+
+  <h4>Name: ${body.name}<h4>
+  <h4>Email: ${body.email}<h4>
+  <h4>Contact Number: ${body.contactNumber}</h4>
+
+  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Building Information</h3>
+
+  <h4>Building Code: ${body.buildingCode}</h4>
+  <h4>Contact Number: ${body.contactNumber}</h4>
+  <h4> Building Code: ${body.buildingCode}</h4>
+  <h4> Building Address: ${body.buildingAddress}</h4>
+  <h4> Unit visiting: ${body.buildingAddress}</h4>
+
+  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Vehicle Information</h3>
+  
+  <h4> Licensed Plate Number: ${body.licensedPlateNumber}</h4>
+
+  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Date</h3>
+
+  <h4> From ${body.dateFrom} to  ${body.dateTo}</h4>
+
+  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Time </h3>
+
+  <h4> From ${body.timeFrom} to  ${body.timeTo}</h4>
+  </div>
+  </div>`;
+  const msg = { from, to: "asherabbasi44@gmail.com", subject, html };
+  return sendEmail(msg);
 };
 
 module.exports = {
-  transport,
-  sendEmail,
-  sendVerificationEmail,
+    sendConfirmationEmail,
 };

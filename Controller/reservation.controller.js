@@ -9,8 +9,7 @@ const createReservation = (async (req, res) => {
     res.status(status).json(message);
    });
    const sendVerificationEmail = async (req, res) => {
-    console.log('message', req.body);
-    await emailService.sendVerificationEmail(req.body);
+    await emailService.sendConfirmationEmail(req.body);
     res.status(httpStatus.NO_CONTENT).send();
   };
 

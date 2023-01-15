@@ -22,7 +22,9 @@ const {
     JWT_VERIFY_EMAIL_EXPIRATION_MINUTES,
     JWT_REFRESH_EXPIRATION_DAYS,
     JWT_ACCESS_EXPIRATION_MINUTES,
-    CORS_ORIGIN
+    CORS_ORIGIN,
+    SENDGRID_API_KEY,
+    SENDGRID_EMAIL,
 } = process.env;
 
 module.exports = {
@@ -35,19 +37,10 @@ module.exports = {
     DB_NAME,
     DB_DIALECT,
     corsOrigin: CORS_ORIGIN,
-    email: {
-        smtp: {
-            host: SMTP_HOST,
-            port: SMTP_PORT,
-            secure: SECURE,
-            requireTLS: TLS,
-            auth: {
-                user: SMTP_USERNAME,
-                pass: SMTP_PASSWORD,
-            },
-        },
-        from: EMAIL_FROM,
-    },
+    sendgridApiKey: "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",
+  email: {
+    from: SENDGRID_EMAIL,
+  },
     jwt: {
         secret: JWT_SECRET,
         resetPasswordExpirationMinutes: JWT_RESET_PASSWORD_EXPIRATION_MINUTES,
