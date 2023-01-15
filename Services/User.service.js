@@ -42,6 +42,16 @@ const getUserByEmailPassword = async (email, password) => {
     return {status: 401, message: 'No User Found'}
   };
 
+  const updateUser = async (_id,updateBody) => {
+    const response = await user.findOne(ObjectID(_id));
+    if (!response) {
+      return { status: 401, message: 'Something went wrong please try later!' }
+    }  
+    Object.assign(response, updateBody);
+    await response.save();
+    return response;
+  };
+
   const deleteUserById = async (_id) => {
     const data = await user.findOne(ObjectID(_id));
     if (data) {
@@ -56,6 +66,7 @@ const getUserByEmailPassword = async (email, password) => {
     getUserById,
     getAllUser,
     getUserByEmailPassword,
+    updateUser,
     deleteUserById
 
   }

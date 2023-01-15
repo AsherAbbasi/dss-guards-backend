@@ -12,6 +12,8 @@ const {
     DB_DIALECT,
     SMTP_HOST,
     SMTP_PORT,
+    SECURE,
+    TLS,
     SMTP_USERNAME,
     SMTP_PASSWORD,
     EMAIL_FROM,
@@ -19,7 +21,8 @@ const {
     JWT_RESET_PASSWORD_EXPIRATION_MINUTES,
     JWT_VERIFY_EMAIL_EXPIRATION_MINUTES,
     JWT_REFRESH_EXPIRATION_DAYS,
-    JWT_ACCESS_EXPIRATION_MINUTES
+    JWT_ACCESS_EXPIRATION_MINUTES,
+    CORS_ORIGIN
 } = process.env;
 
 module.exports = {
@@ -31,21 +34,24 @@ module.exports = {
     DB_PORT,
     DB_NAME,
     DB_DIALECT,
+    corsOrigin: CORS_ORIGIN,
     email: {
         smtp: {
-          host: SMTP_HOST,
-          port: SMTP_PORT,
-          auth: {
-            user: SMTP_USERNAME,
-            pass: SMTP_PASSWORD,
-          },
+            host: SMTP_HOST,
+            port: SMTP_PORT,
+            secure: SECURE,
+            requireTLS: TLS,
+            auth: {
+                user: SMTP_USERNAME,
+                pass: SMTP_PASSWORD,
+            },
         },
         from: EMAIL_FROM,
     },
     jwt: {
-      secret: JWT_SECRET,
-      resetPasswordExpirationMinutes: JWT_RESET_PASSWORD_EXPIRATION_MINUTES,
-      refreshExpirationDays: JWT_REFRESH_EXPIRATION_DAYS,
-      accessExpirationMinutes:JWT_ACCESS_EXPIRATION_MINUTES,
+        secret: JWT_SECRET,
+        resetPasswordExpirationMinutes: JWT_RESET_PASSWORD_EXPIRATION_MINUTES,
+        refreshExpirationDays: JWT_REFRESH_EXPIRATION_DAYS,
+        accessExpirationMinutes: JWT_ACCESS_EXPIRATION_MINUTES,
     },
 };

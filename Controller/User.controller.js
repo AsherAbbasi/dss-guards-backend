@@ -28,7 +28,11 @@
       }
       res.send(user);
     });
- 
+    const updateUser = async (req, res) => {
+      const building = await UserService.updateUser(req.params.id, req.body);
+      res.send(building);
+    };
+
     const deleteUser =(async (req, res) => {
       const {status, message}= await UserService.deleteUserById(req.params.id);
       res.status(status).json(message);
@@ -39,6 +43,7 @@
     getUser,
     getAllUser,
     getUserByEmailPassword,
+    updateUser,
     deleteUser
     
    }
