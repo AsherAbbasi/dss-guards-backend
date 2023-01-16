@@ -7,7 +7,7 @@ const {
 } = require('../config/config');
 // const ApiError = require('../utils/ApiError');
 
-sgMail.setApiKey("5g61NLIvRsGLXlk6MBdSoQ.zZcESX2fMsIJYJIQs8BqviMCH681dx9LKT49fmFxpj4");
+sgMail.setApiKey(sendgridApiKey);
 const sendEmail = async (msg) => {
 
   try {
@@ -22,18 +22,18 @@ const sendEmail = async (msg) => {
 const sendConfirmationEmail = (body) => {
   const subject = 'Parking Permit Request!';
   const html = `
-  <div style="margin:2px;padding:12px;background-color:#faf611">
+  <div style="margin:2px;padding:12px;border:1px solid green">
   <h2 style="color:Red;text-align:center;">DIGITAL SAFEGUARD SECURITY INC</h2>
   <h3 style="color:Green;">Parking Permit</h3>
   <div>
   <div style="margin-bottom:12px"></div>
-  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Personal Information</h3>
+  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Visitor Information</h3>
 
   <h4>Name: ${body.name}<h4>
   <h4>Email: ${body.email}<h4>
   <h4>Contact Number: ${body.contactNumber}</h4>
 
-  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Building Information</h3>
+  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Building Information</h3>
 
   <h4>Building Code: ${body.buildingCode}</h4>
   <h4>Contact Number: ${body.contactNumber}</h4>
@@ -41,20 +41,20 @@ const sendConfirmationEmail = (body) => {
   <h4> Building Address: ${body.buildingAddress}</h4>
   <h4> Unit visiting: ${body.buildingAddress}</h4>
 
-  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Vehicle Information</h3>
+  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Vehicle Information</h3>
   
   <h4> Licensed Plate Number: ${body.licensedPlateNumber}</h4>
 
-  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Date</h3>
+  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Date</h3>
 
   <h4> From ${body.dateFrom} to  ${body.dateTo}</h4>
 
-  <h3 style="color:brown;text-align:center;border-bottom:2px solid red"> Time </h3>
+  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Time </h3>
 
   <h4> From ${body.timeFrom} to  ${body.timeTo}</h4>
   </div>
   </div>`;
-  const msg = { from, to: "iamibadd@gmail.com", subject, html };
+  const msg = { from, to: "asherabbasi44@gmail.com", subject, html };
   return sendEmail(msg);
 };
 
