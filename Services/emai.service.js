@@ -7,7 +7,7 @@ const {
 } = require('../config/config');
 // const ApiError = require('../utils/ApiError');
 
-sgMail.setApiKey(sendgridApiKey);
+sgMail.setApiKey("5g61NLIvRsGLXlk6MBdSoQ.zZcESX2fMsIJYJIQs8BqviMCH681dx9LKT49fmFxpj4");
 const sendEmail = async (msg) => {
 
   try {
