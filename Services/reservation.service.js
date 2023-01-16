@@ -1,6 +1,8 @@
 const { parkingReservation } = require('../Models');
 const { bUnits } = require('../Models');
 const { building } = require('../Models');
+const { UserService } = require('./index');
+const { buildingService } = require('./index');
 const moment = require('moment-timezone');
 
 const startOfMonth = moment().startOf('month').format("YYYY-MM-DD");
@@ -22,29 +24,32 @@ const createReservation = async (userBody) => {
   if (slots.length >= buildingUnitsCheck.parkingSlots) {
     return { status: 401, message: 'Your parking Limit Exceeded!' }
   }
-
   const response = await parkingReservation.create(userBody);
   return { status: 200, message: response }
 };
 
+const getParkingReservation= async (id)=>{
+  const usersData = await UserService.getUserById(id);
+  const buildingCode = usersData.message.buildingCode;
+  if(buildingCode){
+    const response= await parkingReservation.find({buildingCode});
+    return {status: 200, message: response}
+  }
+  const response= await parkingReservation.find().sort({createdAt : -1});
+  if(response) {
+    return {status: 200, message: response};
+  }
+  return {status: 401, message: 'Not found'}
+};
 
-
-      const getParkingReservation= async ()=>{
-        const response=await parkingReservation.find().sort({createdAt : -1});
-        if(response) {
-          return {status: 200, message: response};
-        }
-        return {status: 401, message: 'Not found'}
-        };
-
-        const deleteParkingPermits= async (_id) => {
-          const data=await parkingReservation.findOne(ObjectID(_id));  
-          if (data) {
-            await data.remove();
-            return {status: 200, message: data};
-          }
-          return {status: 401, message: 'Building Not found'}
-        };
+const deleteParkingPermits= async (_id) => {
+  const data= await parkingReservation.findOne(ObjectID(_id));  
+  if (data) {
+    await data.remove();
+    return {status: 200, message: data};
+  }
+   return {status: 401, message: 'Building Not found'}
+};
 
   module.exports={
     createReservation,
