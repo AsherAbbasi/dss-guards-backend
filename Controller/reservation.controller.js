@@ -3,7 +3,6 @@ const httpStatus = require('http-status');
 const emailService=require ('../Services/emai.service')
 
 
-
 const createReservation = (async (req, res) => {
     const {status, message} = await reservationService.createReservation(req.body);
     res.status(status).json(message);
@@ -14,7 +13,8 @@ const createReservation = (async (req, res) => {
   };
 
    const getParkingReservation = (async (req, res) => {
-    const {status, message} = await reservationService.getParkingReservation();
+    const { id } = req.user;
+    const {status, message} = await reservationService.getParkingReservation(id);
     res.status(status).json(message);
    });
 
@@ -24,9 +24,9 @@ const createReservation = (async (req, res) => {
   });
 
 
-   module.exports={
-    createReservation,
-    getParkingReservation,
-    deleteParkingPermits,
-    sendVerificationEmail,
-   }
+module.exports={
+  createReservation,
+  getParkingReservation,
+  deleteParkingPermits,
+  sendVerificationEmail,
+}

@@ -10,7 +10,7 @@ const verifyCallback = (req, resolve, reject, requiredRights) => async (err, use
     req.user = user;
     if (requiredRights.length) {
         const userRights = roleRights.get(user?.role);
-        if(req.baseUrl === '/api/building'){
+        if(req.baseUrl === '/api/building' || req.baseUrl === '/api/reservation'){
             resolve();
         }
         const hasRequiredRights = requiredRights?.every((requiredRight) => userRights?.includes(requiredRight));

@@ -18,7 +18,6 @@ const sendEmail = async (msg) => {
   }
 };
 
-
 const sendConfirmationEmail = (body) => {
   const subject = 'Parking Permit Request!';
   const html = `

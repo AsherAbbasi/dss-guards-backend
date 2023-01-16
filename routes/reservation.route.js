@@ -1,11 +1,13 @@
 var express = require('express');
-const reservationController= require ('../Controller/reservation.controller')
+const reservationController= require ('../Controller/reservation.controller');
+const auth = require('../middlewares/auth');
+
 const router = express.Router();
 
 router
 .route('/')
 .post(reservationController.createReservation)
-.get(reservationController.getParkingReservation)
+.get(auth('AdminView'),reservationController.getParkingReservation)
 router.post('/email', reservationController.sendVerificationEmail);
 
 
