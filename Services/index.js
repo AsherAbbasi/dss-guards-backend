@@ -4,7 +4,9 @@ module.exports.buildingService = require('./building.service');
 module.exports.reservationService = require('./reservation.service');
 module.exports.buildingUnitsService = require('./buildingUnits.service');
 module.exports.Token = require('./tokens.service');
-module.exports.emailService = require('./emai.service');
+module.exports.emailService = require('./email.service');
+module.exports.ticketService = require('./ticket.service');
+
 
 
 

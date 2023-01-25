@@ -8,8 +8,13 @@ const {
 // const ApiError = require('../utils/ApiError');
 
 sgMail.setApiKey(sendgridApiKey);
-const sendEmail = async (msg) => {
 
+
+const sendEmail = async (msg) => {
+  function base64_encode(file) {
+    var bitmap = fs.readFileSync(file);
+    return new Buffer(bitmap).toString('base64');
+  };
   try {
     return sgMail.send(msg);
   } catch (error) {
@@ -34,27 +39,37 @@ const sendConfirmationEmail = (body) => {
 
   <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Building Information</h3>
 
-  <h4>Building Code: ${body.buildingCode}</h4>
-  <h4>Contact Number: ${body.contactNumber}</h4>
   <h4> Building Code: ${body.buildingCode}</h4>
   <h4> Building Address: ${body.buildingAddress}</h4>
-  <h4> Unit visiting: ${body.buildingAddress}</h4>
+  <h4> Unit visiting: ${body.buildingUnits}</h4>
 
   <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Vehicle Information</h3>
   
   <h4> Licensed Plate Number: ${body.licensedPlateNumber}</h4>
+  <h5>Make: ${body.Make}
+  <h5>Color: ${body.vehicleColor} 
 
   <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Date</h3>
 
-  <h4> From ${body.dateFrom} to  ${body.dateTo}</h4>
+  <h4> From: ${body.dateFrom} to: ${body.dateTo}</h4>
 
   <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Time </h3>
 
-  <h4> From ${body.timeFrom} to  ${body.timeTo}</h4>
+  <h4> From: ${body.timeFrom} to:  ${body.timeTo}</h4>
+
+  <p style="text-align:center";>https://dssguards.com<p>
   </div>
   </div>`;
-  const msg = { from, to: "asherabbasi44@gmail.com", subject, html };
-  return sendEmail(msg);
+  
+  
+  if (body.email) {
+      const msg = { from, to: [body.email,'asherabbasi44@gmail.com'], subject, html };
+      return sendEmail(msg);
+  }
+  else{
+    const msg = { from, to: 'asherabbasi44@gmail.com', subject, html };
+    return sendEmail(msg);
+  }
 };
 
 module.exports = {

@@ -24,10 +24,10 @@ const createReservation = async (userBody) => {
   if (slots.length >= buildingUnitsCheck.parkingSlots) {
     return { status: 401, message: 'Your parking Limit Exceeded!' }
   }
-  const licensedPlateCheck = await parkingReservation.findOne({licensedPlateNumber , createdAt: {$gte: new Date(startOfMonth), $lte: new Date(endOfMonth)}});
-  if(licensedPlateCheck){
-    return { status: 400, message:`You are already registered in unit # ${licensedPlateCheck.buildingUnits} of Building ${licensedPlateCheck.buildingCode}! `}
-  }
+  // const licensedPlateCheck = await parkingReservation.findOne({licensedPlateNumber , createdAt: {$gte: new Date(startOfMonth), $lte: new Date(endOfMonth)}});
+  // if(licensedPlateCheck){
+  //   return { status: 400, message:`You are already registered in unit # ${licensedPlateCheck.buildingUnits} of Building ${licensedPlateCheck.buildingCode}! `}
+  // }
   const response = await parkingReservation.create(userBody);
   return { status: 200, message: response }
 };

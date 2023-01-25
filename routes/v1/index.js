@@ -4,6 +4,8 @@ const buildingRoute = require('../building.route');
 const reservationRoute = require('../reservation.route');
 const buildingUnitsRoutes = require('../buildingUnits.route');
 // const employeeRoutes = require('../employee.route');
+const ticketRoute = require('../ticket.route');
+
 
 
 const router = express.Router();
@@ -25,6 +27,11 @@ const defaultRoutes = [
       {
         path:'/units',
         route:buildingUnitsRoutes
+      },
+      ,
+      {
+        path:'/ticket',
+        route:ticketRoute
       },
       // {
       //   path:'/employee',
