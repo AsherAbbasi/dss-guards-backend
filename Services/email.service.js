@@ -26,34 +26,35 @@ const sendEmail = async (msg) => {
 const sendConfirmationEmail = (body) => {
   const subject = 'Parking Permit Request!';
   const html = `
-  <div style="margin:2px;padding:12px;border:1px solid green">
+  <div style="margin:2px;padding:12px;border:1px solid green;background-color:#e8c113;">
+  <img src="https://dssguards.com/wp-content/uploads/2021/03/logo-2.jpg" alt="logo"/>
   <h2 style="color:Red;text-align:center;">DIGITAL SAFEGUARD SECURITY INC</h2>
   <h3 style="color:Green;">Parking Permit</h3>
   <div>
   <div style="margin-bottom:12px"></div>
-  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Visitor Information</h3>
+  <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black ;padding:8px"> Visitor Information</h3>
 
   <h4>Name: ${body.name}<h4>
   <h4>Email: ${body.email}<h4>
   <h4>Contact Number: ${body.contactNumber}</h4>
 
-  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Building Information</h3>
+  <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black;padding:8px"> Building Information</h3>
 
   <h4> Building Code: ${body.buildingCode}</h4>
   <h4> Building Address: ${body.buildingAddress}</h4>
   <h4> Unit visiting: ${body.buildingUnits}</h4>
 
-  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Vehicle Information</h3>
+  <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black;padding:8px"> Vehicle Information</h3>
   
   <h4> Licensed Plate Number: ${body.licensedPlateNumber}</h4>
   <h5>Make: ${body.Make}
   <h5>Color: ${body.vehicleColor} 
 
-  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Date</h3>
+  <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black; padding:8px"> Date</h3>
 
   <h4> From: ${body.dateFrom} to: ${body.dateTo}</h4>
 
-  <h3 style="color:brown;text-align:center;border-bottom:1px solid gray"> Time </h3>
+  <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black;padding:8px"> Time </h3>
 
   <h4> From: ${body.timeFrom} to:  ${body.timeTo}</h4>
 
