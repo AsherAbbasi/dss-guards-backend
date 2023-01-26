@@ -20,6 +20,11 @@ const getParkingReservation = (async (req, res) => {
   res.status(status).json(message);
 });
 
+const getOneReservation = (async (req, res) => {
+  const { status, message } = await reservationService.getReservation(req.params.id);
+  res.status(status).json(message);
+});
+
 const deleteParkingPermits = (async (req, res) => {
   const { status, message } = await reservationService.deleteParkingPermits(req.params);
   res.status(status).json(message);
@@ -31,4 +36,5 @@ module.exports = {
   getParkingReservation,
   deleteParkingPermits,
   sendVerificationEmail,
+  getOneReservation,
 }
