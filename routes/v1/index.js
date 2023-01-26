@@ -5,6 +5,7 @@ const reservationRoute = require('../reservation.route');
 const buildingUnitsRoutes = require('../buildingUnits.route');
 // const employeeRoutes = require('../employee.route');
 const ticketRoute = require('../ticket.route');
+const generatePDF = require('../generatepdf.route');
 
 
 
@@ -33,10 +34,10 @@ const defaultRoutes = [
         path:'/ticket',
         route:ticketRoute
       },
-      // {
-      //   path:'/employee',
-      //   route:employeeRoutes
-      // }
+      {
+        path:'/getPDF',
+        route:generatePDF
+      }
 
 ]
 defaultRoutes.forEach((route) => {

@@ -6,6 +6,7 @@ module.exports.buildingUnitsService = require('./buildingUnits.service');
 module.exports.Token = require('./tokens.service');
 module.exports.emailService = require('./email.service');
 module.exports.ticketService = require('./ticket.service');
+module.exports.generatepdf = require('./generatepdf.service');
 
 
 

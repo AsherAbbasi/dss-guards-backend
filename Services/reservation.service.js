@@ -46,6 +46,15 @@ const getParkingReservation= async (id)=>{
   return {status: 401, message: 'Not found'}
 };
 
+const getReservation = async (id)=>{
+  const response = await parkingReservation.findOne(ObjectID(id));
+  if(response) {
+    return {status: 200, message: response};
+  }
+  return {status: 401, message: 'Not found'}
+};
+
+
 const deleteParkingPermits= async (_id) => {
   const data= await parkingReservation.findOne(ObjectID(_id));  
   if (data) {
@@ -58,5 +67,6 @@ const deleteParkingPermits= async (_id) => {
   module.exports={
     createReservation,
     getParkingReservation,
-    deleteParkingPermits
+    deleteParkingPermits,
+    getReservation
   }

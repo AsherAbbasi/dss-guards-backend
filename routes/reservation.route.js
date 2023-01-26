@@ -13,6 +13,7 @@ router.post('/email', reservationController.sendVerificationEmail);
 
 router
 .route('/:id')
+.get(reservationController.getOneReservation)
 .delete(reservationController.deleteParkingPermits)
 
 
