@@ -34,8 +34,8 @@ const sendConfirmationEmail = (body) => {
   <div style="margin-bottom:12px"></div>
   <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black ;padding:8px"> Visitor Information</h3>
 
-  <h4>Name: ${body.name}<h4>
-  <h4>Email: ${body.email}<h4>
+  <h4>Name: ${body.name}</h4>
+  <h4>Email: ${body.email}</h4>
   <h4>Contact Number: ${body.contactNumber}</h4>
 
   <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black;padding:8px"> Building Information</h3>
@@ -47,8 +47,8 @@ const sendConfirmationEmail = (body) => {
   <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black;padding:8px"> Vehicle Information</h3>
   
   <h4> Licensed Plate Number: ${body.licensedPlateNumber}</h4>
-  <h5>Make: ${body.Make}
-  <h5>Color: ${body.vehicleColor} 
+  <h4>Make: ${body.Make} </h4>
+  <h4>Color: ${body.vehicleColor} </h4>
 
   <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black; padding:8px"> Date</h3>
 
@@ -56,9 +56,10 @@ const sendConfirmationEmail = (body) => {
 
   <h3 style="color:white;text-align:center;border:1px solid gray;background-color:black;padding:8px"> Time </h3>
 
-  <h4> From: ${body.timeFrom} to:  ${body.timeTo}</h4>
+  <h4> From: ${body.timeFrom} </h2>
+  <h4>To:  ${body.timeTo}</h4>
 
-  <p style="text-align:center";>https://dssguards.com<p>
+  <p style="text-align:center";>https://dssguards.com</p>
   </div>
   </div>`;
   

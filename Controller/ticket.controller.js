@@ -12,6 +12,11 @@ const addTicket = async (req, res) => {
     res.status(status).json(message);
    };
 
+   const getOneTicket = (async (req, res) => {
+    const { status, message } = await ticketService.getOneTicket(req.params.id);
+    res.status(status).json(message);
+  });
+
    const updateTicket = async (req, res) => {
     const ticket = await ticketService.updateTicket(req.params.id, req.body);
     res.send(ticket);
@@ -26,5 +31,6 @@ const addTicket = async (req, res) => {
     addTicket,
     getTicket,
     updateTicket,
-    deleteTicket
+    deleteTicket,
+    getOneTicket
   }
