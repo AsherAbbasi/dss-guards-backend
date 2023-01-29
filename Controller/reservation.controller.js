@@ -21,7 +21,7 @@ const getParkingReservation = (async (req, res) => {
 });
 
 const getOneReservation = (async (req, res) => {
-  const { status, message } = await reservationService.getReservation(req.params.id);
+  const { status, message } = await reservationService.getOneReservation(req.params.id);
   res.status(status).json(message);
 });
 

@@ -4,7 +4,10 @@ const router = express.Router();
 
 
 router
-.route('/:id').get(pdfController.generatePDF);
+.route('/ticket/:id').get(pdfController.ticketPDF);
+router.route('/reservation/:id')
+.get(pdfController.reservationPDF)
+
 
 
 module.exports = router;

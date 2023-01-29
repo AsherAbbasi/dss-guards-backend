@@ -16,7 +16,7 @@ module.exports = async (userId, tableData) => {
     const {message} = await getOneTicket(userId);
   const dssReports = {
     watermark: {
-      text: 'Verified by Dssguard',
+      text: 'www.dssguards.com',
       color: 'brown',
       opacity: 0.15,
       italics: false,
@@ -29,14 +29,25 @@ module.exports = async (userId, tableData) => {
         width: 270,style: 'mainHeading'
     },
     // { text: 'Digital Safeguard Security Inc', style: 'mainHeading' },
-        { text: 'Parking Voilation Notice', style: 'voilationheader' },
-        { text: `${message.name}`, style: 'subheader' },
+        { text: 'Parking Voilation Notice #', style: 'voilationheader' },
+        { text: 'issued and served on the date of voilation by: ',style:'text' },
+        {
+            style: 'tableExample',
+            table: {
+                body: [
+                    [{ text: 'OFFICER NAME', style: 'tableHeader1' },{ text: 'OFFICER ID', style: 'tableHeader1' }, { text: 'UNIT', style: 'tableHeader1' }],
+                    [{ text: `${message.officerName}`, style: 'tableRow' },{ text: `${message.officerId}`, style: 'tableRow' }, { text: `${message.unit}`, style: 'tableRow' }],
+    
+                ],
+            }
+    
+        },
         { text: 'believes from personal Knowledge and certifies that on: ' },
         {
           style: 'tableExample',
           table: {
               body: [
-                  [{ text: 'DATE OF VOILATION (YYYY-MM-DD)', style: 'tableHeader' }, { text: 'TIME OF VOILATION FROM', style: 'tableHeader' }, { text: 'TO', style: 'tableHeader' }],
+                  [{ text: 'DATE OF VOILATION (YYYY-MM-DD)', style: 'tableHeader2' }, { text: 'TIME OF VOILATION FROM', style: 'tableHeader2' }, { text: 'TO', style: 'tableHeader2' }],
                   [`${message.date}`, `${message.timeFrom}`, `${message.timeTo}`]
               ]
           }
@@ -48,7 +59,7 @@ module.exports = async (userId, tableData) => {
           style: 'tableExample',
           table: {
               body: [
-                  [{ text: 'PLATE NUMBER', style: 'tableHeader' }, { text: 'EXPIRY DATE(Month/Year)', style: 'tableHeader' }, { text: 'PROVINCE', style: 'tableHeader' }, { text: 'MAKE', style: 'tableHeader' }, { text: 'CITY', style: 'tableHeader' }],
+                  [{ text: 'PLATE NUMBER', style: 'tableHeader3' }, { text: 'EXPIRY DATE(Month/Year)', style: 'tableHeader3' }, { text: 'PROVINCE', style: 'tableHeader3' }, { text: 'MAKE', style: 'tableHeader3' }, { text: 'CITY', style: 'tableHeader3' }],
                   [`${message.licensedPlateNumber}`,`${message.expDate}`, `${message.province}`, `${message.make}`, `${message.city}`],
 
               ],
@@ -59,7 +70,7 @@ module.exports = async (userId, tableData) => {
         style: 'tableExample',
         table: {
             body: [
-                [{ text: 'LOCATION OF PARKING VOILATION', style: 'tableHeader' }, { text: 'DID COMMIT THE PARKING VOILATION OF (Code No 00347)', style: 'tableHeader' }],
+                [{ text: 'LOCATION OF PARKING VOILATION', style: 'tableHeader4' }, { text: 'DID COMMIT THE PARKING VOILATION ', style: 'tableHeader4' }],
                 [`${message.location}`, `${message.voilation}`],
 
             ],
@@ -70,79 +81,108 @@ module.exports = async (userId, tableData) => {
         style: 'tableExample',
         table: {
             body: [
-                [{ text: 'CONTRARY TO (Bylaw or Code)', style: 'tableHeader' }],
-                [`${message.law}`],
+                [{ text: 'CONTRARY TO (Bylaw or Code)', style: 'tableHeader5' },{ text: 'ADMINISTRATIVE PENALTY AMOUNT', style: 'tableHeader5' }],
+                [ `${message.law}`,`${message.penaltyAmount}`],
 
             ],
         }
 
     },
-    { text: 'COMMENTS:', style: 'header' },
-    { text: `${message.comments}`, marginBottom: 12 },
     {
         style: 'tableExample',
         table: {
             body: [
-                [{ text: 'ADMINISTRATIVE PENALTY AMOUNT', style: 'tableHeader' }],
-                [{ text: `${message.penaltyAmount}`, style: 'tableRow' }],
+                [{ text: 'COMMENTS', style: 'tableHeader6' }],
+                [`${message.comments}`],
 
             ],
         }
 
-    },
-    { text: 'issued and served on the date of voilation by: ' },
-    {
-        style: 'tableExample',
-        table: {
-            body: [
-                [{ text: 'OFFICER NO.', style: 'tableHeader' }, { text: 'UNIT', style: 'tableHeader' }],
-                [{ text: `${message.officerNo}`, style: 'tableRow' }, { text: `${message.unit}`, style: 'tableRow' }],
-
-            ],
-        }
-
-    },
+    },   
+   
     { text: 'NOTICE:',style:'notice'},
     {text:'The Administrative Penalty amount shown on this Parking Voilation Notice constitutes a debt of the owner of the vehicle to the City of Toronto. Within 15 days of the date voilation, choose one of the options on the back of this Notice' },
     // { text: `Ticket created at ${message.createdAt}`,style:'notice'},
+    { text: `www.dssguards.com`, style: 'footer' },
+    
+
     ],
     styles: {
     mainHeading: {
       fontSize: 25,
       color: "brown",
-      // bold: true,
       margin: [130, -10, 0, 20]
   },
+  text:{
+   marginTop:16,
+  },
   voilationheader: {
-      color: "red",
+    //   color: "red",
       fontSize: 18,
-      background:'#e8c468',
-      // margin: 12,
+      color:'brown',
   },
   header: {
       fontSize: 18,
-      // bold: true,
       margin: [0, 0, 0, 10]
   },
   subheader: {
       fontSize: 16,
-      // bold: true,
       margin: [0, 10, 0, 5]
   },
   tableExample: {
       margin: [0, 5, 0, 15],
   },
-  tableHeader: {
-      // bold: true,
-      fontSize: 13,
-      color: 'black',
-      background:'#e3e6e4',
-  },
+  tableHeader1: {
+    fontSize: 12,
+    marginRight:99,
+    color: 'black',
+    background:'#e3e6e4',
+},
+tableHeader2: {
+    fontSize: 12,
+    marginRight:39,
+    color: 'black',
+    background:'#e3e6e4',
+},
+tableHeader3: {
+    fontSize: 12,
+    marginRight:23,
+    color: 'black',
+    background:'#e3e6e4',
+},
+tableHeader4: {
+    fontSize: 12,
+    marginRight:44,
+    color: 'black',
+    background:'#e3e6e4',
+},
+tableHeader5: {
+    fontSize: 12,
+    marginRight:60,
+    color: 'black',
+    background:'#e3e6e4',
+},
+tableHeader6: {
+    fontSize: 12,
+    marginRight:387,
+    color: 'black',
+    background:'#e3e6e4',
+},
   notice:{
     fontSize:14,
-    bolditalics:true,
+    marginTop:23,
     marginBottom:8,
-    background:'#e6a605'
+    color:'#e6a605'
+  },
+  comments:{
+    marginBottom:22,
+    border: "1px solid red"
+  },
+  footer:{
+    marginTop:65,
+    marginLeft:200,
+    fontSize:14,
+    color:'blue',
   }
     }
   };

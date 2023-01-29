@@ -6,7 +6,7 @@ const buildingUnitsRoutes = require('../buildingUnits.route');
 // const employeeRoutes = require('../employee.route');
 const ticketRoute = require('../ticket.route');
 const generatePDF = require('../generatepdf.route');
-
+const dailyReport = require('../dailyReport.route');
 
 
 const router = express.Router();
@@ -37,6 +37,10 @@ const defaultRoutes = [
       {
         path:'/getPDF',
         route:generatePDF
+      },
+      {
+        path:'/dailyReport',
+        route:dailyReport
       }
 
 ]

@@ -5,5 +5,7 @@ module.exports.bUnits = require('./buildingUnits.model');
 // module.exports.employee = require('./employee.model');
 module.exports.ticket = require('./ticket.model');
 module.exports.Token = require('./tokens.model');
+module.exports.dailyReport = require('./dailyReport.model');
+
 
 

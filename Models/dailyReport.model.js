@@ -1,36 +1,24 @@
 const mongoose = require('mongoose');
 
-const ticketSchema = mongoose.Schema(
+const dailyReportSchema = mongoose.Schema(
     {
-        officerName: {
+        guardName: {
             type: String,
             required: true,
-        },
-        date: {
-            type: String,
-            required: true,
-        },
-        timeFrom: {
-            type: String,
-            // required: true,
-        },
-        timeTo: {
-            type: String,
-            // required: true,
         },
         licensedPlateNumber: {
             type: String,
             required: true,
         },
-        expDate: {
-            type: String,
-            required: true,
-        },
-        province: {
+        date: {
             type: String,
             // required: true,
         },
-        make: {
+        clientName: {
+            type: String,
+            // required: true,
+        },
+        clientAddress: {
             type: String,
             required: true,
         },
@@ -38,32 +26,48 @@ const ticketSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        location: {
-            type: String,
-            required: true,
-        },
-        voilation: {
-            type: String,
-            required: true,
-        },
-        law: {
-            type: String,
-            required: true,
-        },
-        comments: {
+        province: {
             type: String,
             // required: true,
         },
-        penaltyAmount: {
+        postalCode: {
             type: String,
             required: true,
         },
-        officerId: {
+        weatherCondition: {
             type: String,
             required: true,
         },
-        unit: {
+        equipment: {
             type: String,
+            required: true,
+        },
+        relievedTo: {
+            type: String,
+            required: true,
+        },
+        relievedBy: {
+            type: String,
+            required: true,
+        },
+        shiftStartTime: {
+            type: String,
+            // required: true,
+        },
+        shiftEndTime: {
+            type: String,
+            required: true,
+        },
+        hoursOfShift: {
+            type: String,
+            required: true,
+        },
+        time: {
+            type: Array,
+            required: true,
+        },
+        remarks: {
+            type: Array,
             required: true,
         },
     },
@@ -75,6 +79,6 @@ const ticketSchema = mongoose.Schema(
 
 
 
-const ticket = mongoose.model('ticket', ticketSchema);
+const dailyReport = mongoose.model('dailyReport', dailyReportSchema);
 
-module.exports = ticket;
+module.exports = dailyReport;

@@ -26,9 +26,8 @@ const sendEmail = async (msg) => {
 const sendConfirmationEmail = (body) => {
   const subject = 'Parking Permit Request!';
   const html = `
-  <div style="margin:2px;padding:12px;border:1px solid green;background-color:#e8c113;">
+  <div style="margin:2px;padding:12px;border:1px solid green;background-color:#ffdf46;">
   <img src="https://dssguards.com/wp-content/uploads/2021/03/logo-2.jpg" alt="logo"/>
-  <h2 style="color:Red;text-align:center;">DIGITAL SAFEGUARD SECURITY INC</h2>
   <h3 style="color:Green;">Parking Permit</h3>
   <div>
   <div style="margin-bottom:12px"></div>

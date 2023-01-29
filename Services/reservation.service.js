@@ -20,6 +20,7 @@ const createReservation = async (userBody) => {
   if (!buildingUnitsCheck) {
     return { status: 401, message: 'Invalid building Unit' }
   }
+  
   const slots = await parkingReservation.find({ buildingUnits, createdAt: {$gte: new Date(startOfMonth), $lte: new Date(endOfMonth)} })
   if (slots.length >= buildingUnitsCheck.parkingSlots) {
     return { status: 401, message: 'Your parking Limit Exceeded!' }
@@ -46,7 +47,8 @@ const getParkingReservation= async (id)=>{
   return {status: 401, message: 'Not found'}
 };
 
-const getReservation = async (id)=>{
+
+const getOneReservation = async (id)=>{
   const response = await parkingReservation.findOne(ObjectID(id));
   if(response) {
     return {status: 200, message: response};
@@ -68,5 +70,5 @@ const deleteParkingPermits= async (_id) => {
     createReservation,
     getParkingReservation,
     deleteParkingPermits,
-    getReservation
+    getOneReservation
   }
