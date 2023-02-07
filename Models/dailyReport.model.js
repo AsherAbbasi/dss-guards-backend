@@ -6,7 +6,7 @@ const dailyReportSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        licensedPlateNumber: {
+        licenseNumber: {
             type: String,
             required: true,
         },
@@ -62,14 +62,14 @@ const dailyReportSchema = mongoose.Schema(
             type: String,
             required: true,
         },
-        time: {
+        time:{
             type: Array,
-            required: true,
+            default: []
         },
-        remarks: {
+        remarks:{
             type: Array,
-            required: true,
-        },
+            default: []
+        }
     },
     {
         timestamps: true,

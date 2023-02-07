@@ -1,12 +1,13 @@
 const { generatepdf } = require('../services');
+const catchAsync = require('../utils/catchAsync');
 
-const ticketPDF = (async (req, res) => {
+const ticketPDF = catchAsync(async (req, res) => {
     const pdfDoc = await generatepdf.ticketPDF(req.params.id);
     res.contentType('application/pdf');
     res.send(pdfDoc);
 });
 
-const reservationPDF = (async (req, res) => {
+const reservationPDF = catchAsync(async (req, res) => {
     const pdfDoc = await generatepdf.reservationPDF(req.params.id);
     res.contentType('application/pdf');
     res.send(pdfDoc);
@@ -14,5 +15,4 @@ const reservationPDF = (async (req, res) => {
 module.exports = {
     ticketPDF,
     reservationPDF,
-  };
-  
+};

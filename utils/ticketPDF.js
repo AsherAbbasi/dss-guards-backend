@@ -13,7 +13,7 @@ const fonts = {
 };
 
 module.exports = async (userId, tableData) => {
-    const {message} = await getOneTicket(userId);
+  const {message} = await getOneTicket(userId);
   const dssReports = {
     watermark: {
       text: 'www.dssguards.com',
