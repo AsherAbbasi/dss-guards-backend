@@ -11,4 +11,6 @@ router
 .route('/:id')
 .put(dailyReportController.updateDailyReport)
 .delete(dailyReportController.deleteDailyReport)
+
+
 module.exports = router;

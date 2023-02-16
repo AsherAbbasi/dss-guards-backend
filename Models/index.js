@@ -6,6 +6,10 @@ module.exports.bUnits = require('./buildingUnits.model');
 module.exports.ticket = require('./ticket.model');
 module.exports.Token = require('./tokens.model');
 module.exports.dailyReport = require('./dailyReport.model');
+module.exports.mobileSupervisorReport = require('./mobileSupervisorReport.model');
+module.exports.incidentReport = require('./incidentReport.model');
+
+
 
 
 
