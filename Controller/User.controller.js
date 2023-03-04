@@ -30,8 +30,8 @@ const getUser = catchAsync(async (req, res) => {
   res.send(user);
 });
 const updateUser = catchAsync(async (req, res) => {
-  const building = await UserService.updateUser(req.params.id, req.body);
-  res.send(building);
+  const user = await UserService.updateUser(req.params.id, req.body);
+  res.send(user);
 });
 
 const deleteUser = catchAsync(async (req, res) => {

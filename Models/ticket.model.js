@@ -4,27 +4,22 @@ const ticketSchema = mongoose.Schema(
     {
         officerName: {
             type: String,
-            required: true,
         },
         date: {
             type: String,
-            required: true,
-        },
-        timeFrom: {
-            type: String,
             // required: true,
         },
-        timeTo: {
+        voilationTime: {
             type: String,
             // required: true,
         },
         licensedPlateNumber: {
             type: String,
-            required: true,
+            // required: true,
         },
         expDate: {
             type: String,
-            required: true,
+            // required: true,
         },
         province: {
             type: String,
@@ -32,23 +27,23 @@ const ticketSchema = mongoose.Schema(
         },
         make: {
             type: String,
-            required: true,
+            // required: true,
         },
         city: {
             type: String,
-            required: true,
+            // required: true,
         },
         location: {
             type: String,
-            required: true,
+            // required: true,
         },
         voilation: {
             type: String,
-            required: true,
+            // required: true,
         },
         law: {
             type: String,
-            required: true,
+            // required: true,
         },
         comments: {
             type: String,
@@ -56,16 +51,17 @@ const ticketSchema = mongoose.Schema(
         },
         penaltyAmount: {
             type: String,
-            required: true,
+            // required: true,
         },
         officerId: {
             type: String,
-            required: true,
-        },
-        unit: {
-            type: String,
-            required: true,
-        },
+            // required: true,
+        }
+        ,
+        // unit: {
+        //     type: String,
+        //     // required: true,
+        // },
     },
     {
         timestamps: true,
