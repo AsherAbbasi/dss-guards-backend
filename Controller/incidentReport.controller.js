@@ -7,7 +7,7 @@ const  addIncidentReport = catchAsync(async (req, res) => {
 });
 
 const getIncidentReport = catchAsync(async (req, res) => {
-  const { status, message } = await incidentReport.getIncidentReport(req.body);
+  const { status, message } = await incidentReport.getIncidentReport();
   res.status(status).json(message);
 });
 
