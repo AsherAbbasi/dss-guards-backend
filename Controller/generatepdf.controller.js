@@ -1,4 +1,4 @@
-const { generatepdf } = require('../services');
+const { generatepdf } = require('../Services');
 const catchAsync = require('../utils/catchAsync');
 
 const ticketPDF = catchAsync(async (req, res) => {
