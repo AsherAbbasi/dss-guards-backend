@@ -64,11 +64,11 @@ const sendConfirmationEmail = (body) => {
   
   
   if (body.email) {
-      const msg = { from, to: [body.email,'asherabbasi44@gmail.com'], subject, html };
+      const msg = { from, to: [body.email,'sufyan@dssguards.com'], subject, html };
       return sendEmail(msg);
   }
   else{
-    const msg = { from, to: 'asherabbasi44@gmail.com', subject, html };
+    const msg = { from, to: 'sufyan@dssguards.com', subject, html };
     return sendEmail(msg);
   }
 };
