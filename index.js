@@ -24,7 +24,7 @@ const exitHandler = () => {
 };
 
 const unexpectedErrorHandler = (error) => {
-  console.log(error);
+  console.error(error);
   exitHandler();
 };
 
