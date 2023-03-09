@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-     "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve .",
-    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build .",
+     "start": "pm2 start ecosystem.config.json --no-daemon"
   },
   "keywords": [],
   "author": "",
