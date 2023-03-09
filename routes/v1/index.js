@@ -7,6 +7,10 @@ const buildingUnitsRoutes = require('../buildingUnits.route');
 const ticketRoute = require('../ticket.route');
 const generatePDF = require('../generatepdf.route');
 const dailyReport = require('../dailyReport.route');
+const mobileSupervisorReport = require('../mobileSupervisorReport.route');
+const incidentReport = require('../incidentReport.route');
+
+
 
 
 const router = express.Router();
@@ -41,6 +45,14 @@ const defaultRoutes = [
       {
         path:'/dailyReport',
         route:dailyReport
+      },
+      {
+        path:'/supervisorReport',
+        route:mobileSupervisorReport
+      },
+      {
+        path:'/incidentReport',
+        route:incidentReport
       }
 
 ]

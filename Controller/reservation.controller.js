@@ -32,6 +32,7 @@ const deleteParkingPermits = catchAsync(async (req, res) => {
 });
 
 
+
 module.exports = {
   createReservation,
   getParkingReservation,

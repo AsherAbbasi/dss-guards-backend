@@ -14,7 +14,7 @@ const parkingReservationSchema = mongoose.Schema(
     },
     name: {
       type: String,
-      required:true,
+      required: true,
     },
     email: {
       type: String,
@@ -22,44 +22,44 @@ const parkingReservationSchema = mongoose.Schema(
     },
     contactNumber: {
       type: String,
-      required:true,
+      required: true,
     },
     buildingUnits: {
-        type: String,
-        required: true,
-      },
-      vehicleModel: {
-        type: String,
-        required: false,
-      },
-      licensedPlateNumber: {
-        type: String,
-        required:true,
-      },
-      vehicleColor: {
-        type: String,
-        required: false,
-      },
-      Make: {
-        type: String,
-        required:false,
-      },
-      dateFrom: {
-        type: String,
-        required: true,
-      },
-      dateTo: {
-        type: String,
-        required:true,
-      },
-      timeFrom: {
-        type:String,
-        required: true,
-      },
-      timeTo: {
-        type:String,
-        required:true,
-      },
+      type: String,
+      required: true,
+    },
+    vehicleModel: {
+      type: String,
+      required: false,
+    },
+    licensedPlateNumber: {
+      type: String,
+      required: true,
+    },
+    vehicleColor: {
+      type: String,
+      required: false,
+    },
+    Make: {
+      type: String,
+      required: false,
+    },
+    dateFrom: {
+      type: String,
+      required: true,
+    },
+    dateTo: {
+      type: String,
+      required: true,
+    },
+    timeFrom: {
+      type: String,
+      required: true,
+    },
+    timeTo: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

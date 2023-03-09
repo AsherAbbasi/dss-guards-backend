@@ -12,7 +12,7 @@ const fonts = {
     },
 };
 
-module.exports = async (_Id, tableData) => {
+module.exports = async (_Id, report) => {
     const { message } = await getOneReservation(_Id);
     const dssReports = {
         watermark: {
@@ -60,7 +60,7 @@ module.exports = async (_Id, tableData) => {
                 table: {
                     body: [
                         [{ text: 'Plate Number', style: 'tableHeader3' }, { text: 'Make', style: 'tableHeader3' }, { text: 'Color', style: 'tableHeader3' }],
-                        [{ text: `${message.licensedPlateNumber}`, style: 'tableHeader3' }, { text: `${message.Make}`, style: 'tableHeader3' }, { text: `${message.color}`, style: 'tableHeader3' }],
+                        [{ text: `${message.licensedPlateNumber}`, style: 'tableHeader3' }, { text: `${message.Make}`, style: 'tableHeader3' }, { text: `${message.vehicleColor}`, style: 'tableHeader3' }],
 
                     ],
                 }

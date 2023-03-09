@@ -8,6 +8,8 @@ module.exports.emailService = require('./email.service');
 module.exports.ticketService = require('./ticket.service');
 module.exports.generatepdf = require('./generatepdf.service');
 module.exports.dailyReport = require('./dailyReport.service');
+module.exports.mobileSupervisorReport= require('./mobileSupervisorReport.service')
+module.exports.incidentReport= require('./incidentReport.service')
 
 
 
